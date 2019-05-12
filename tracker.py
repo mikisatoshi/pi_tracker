@@ -47,7 +47,7 @@ class PiTracker():
         minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(results)
         print('max value: {}, position: {}'.format(maxVal, maxLoc))
         drawn = frame.copy()
-        self.draw_window(drawn, maxLoc[0], maxLoc[1], 90, 100)
+        self.draw_window(drawn, maxLoc[0], maxLoc[1], self.template.shape[1], 10)
 
         cv2.imshow('frame',drawn)
         if cv2.waitKey(1) != -1:
