@@ -18,7 +18,7 @@ except:
 class PiTracker():
   def __init__(self, mode = 0, para_path = "hoge"):
     self.template = cv2.imread('template.JPG')  # テンプレート画像
-    cv2.imshow('frame',self.template)
+    print(self.template)
 
 
 
@@ -38,7 +38,7 @@ class PiTracker():
      
     while(True):
         ret, frame = cap.read()
-        results = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+        results = cv2.matchTemplate(frame, self.template, cv2.TM_CCOEFF_NORMED)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         cv2.imshow('frame',frame)
         if cv2.waitKey(1) != -1:
