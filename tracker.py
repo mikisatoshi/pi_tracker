@@ -21,6 +21,8 @@ class PiTracker():
     pass
 
   def tracker(self):
+
+    print("tracker")
     cap = cv2.VideoCapture(0)
      
     while(True):
@@ -34,6 +36,7 @@ class PiTracker():
 
 
 def main():
+  print("main")
 
   # value = sys.argv
   # print(value)
