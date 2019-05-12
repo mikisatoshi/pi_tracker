@@ -19,7 +19,9 @@ except:
 class PiTracker():
   def __init__(self, mode = 0, para_path = "hoge"):
     self.template = cv2.imread('template.JPG')  # テンプレート画像
-    plt.imshow(self.template)
+    cv2.imshow('aaa',self.template)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 
