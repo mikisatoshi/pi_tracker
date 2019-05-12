@@ -21,9 +21,15 @@ class PiTracker():
     pass
 
   def tracker(self):
+    """
+    to find property identifier
+    the https://docs.opencv.org/3.1.0/d8/dfe/classcv_1_1VideoCapture.html
+
+    """
 
     print("tracker")
     cap = cv2.VideoCapture(0)
+    cap.set(5,5)
      
     while(True):
         ret, frame = cap.read()
