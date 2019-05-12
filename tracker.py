@@ -3,7 +3,7 @@ import json,datetime,time,sys
 import numpy as np
 import pandas as pd
 import cv2
-import matplotlib as plt
+from matplotlib import pylab as plt
 from sklearn.covariance import EmpiricalCovariance, MinCovDet
 try:
   import ADS1x15
@@ -20,7 +20,7 @@ class PiTracker():
   def __init__(self, mode = 0, para_path = "hoge"):
     self.template = cv2.imread('template.JPG')  # テンプレート画像
     plt.imshow(self.template)
-    plt.show()
+
 
 
 
