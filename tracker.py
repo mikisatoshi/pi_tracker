@@ -43,13 +43,40 @@ class PiTracker():
     while(True):
         ret, frame = cap.read()
         results = cv2.matchTemplate(frame, self.template, cv2.TM_CCOEFF_NORMED)
-        print(np.array(results).max())
-        cv2.imshow('frame',frame)
+
+        minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(results)
+        print('max value: {}, position: {}'.format(maxVal, maxLoc))
+        drawn = frame.copy()
+        draw_window(drawn, maxLoc[0], maxLoc[1], 50, 50)
+
+        cv2.imshow('frame',drawn)
         if cv2.waitKey(1) != -1:
             break
  
     cap.release()
     cv2.destroyAllWindows()
+
+  def draw_window(img, x, y, w, h):
+    '''
+    Args:
+        img: 描画対象の画像
+        x: 検索窓の左上の x 座標
+        y: 検索窓の左上の y 座標
+        w: 検索窓の幅
+        h: 検索窓の高さ
+    '''
+    tl = x, y  # 左上の頂点座標
+    br = x + w, y + h  # 右下の頂点座標
+    cv2.rectangle(img, tl, br, (0, 255, 0), 3)
+
+    x, y = 100, 150  # 検索窓の左上の座標
+    drawn = img.copy()
+    draw_window(drawn, x, y, w, h)
+
+    plt.imshow(cv2.cvtColor(drawn, cv2.COLOR_BGR2RGB))
+    plt.show()
+
+    print('similarity:', result[x, y])  # similarity: -0.0350026
 
 
 def main():
