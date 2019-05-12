@@ -47,7 +47,7 @@ class PiTracker():
         minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(results)
         print('max value: {}, position: {}'.format(maxVal, maxLoc))
         drawn = frame.copy()
-        draw_window(drawn, maxLoc[0], maxLoc[1], 50, 50)
+        self.draw_window(drawn, maxLoc[0], maxLoc[1], 50, 50)
 
         cv2.imshow('frame',drawn)
         if cv2.waitKey(1) != -1:
@@ -56,7 +56,7 @@ class PiTracker():
     cap.release()
     cv2.destroyAllWindows()
 
-  def draw_window(img, x, y, w, h):
+  def draw_window(self, img, x, y, w, h):
     '''
     Args:
         img: 描画対象の画像
@@ -69,14 +69,7 @@ class PiTracker():
     br = x + w, y + h  # 右下の頂点座標
     cv2.rectangle(img, tl, br, (0, 255, 0), 3)
 
-    x, y = 100, 150  # 検索窓の左上の座標
-    drawn = img.copy()
-    draw_window(drawn, x, y, w, h)
 
-    plt.imshow(cv2.cvtColor(drawn, cv2.COLOR_BGR2RGB))
-    plt.show()
-
-    print('similarity:', result[x, y])  # similarity: -0.0350026
 
 
 def main():
