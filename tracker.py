@@ -43,7 +43,7 @@ class PiTracker():
     while(True):
         ret, frame = cap.read()
         results = cv2.matchTemplate(frame, self.template, cv2.TM_CCOEFF_NORMED)
-        print(results)
+        print(results.max())
         cv2.imshow('frame',frame)
         if cv2.waitKey(1) != -1:
             break
