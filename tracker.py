@@ -43,8 +43,7 @@ class PiTracker():
     while(True):
         ret, frame = cap.read()
         results = cv2.matchTemplate(frame, self.template, cv2.TM_CCOEFF_NORMED)
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        cv2.imshow('frame',frame)
+        cv2.imshow('frame',results)
         if cv2.waitKey(1) != -1:
             break
  
