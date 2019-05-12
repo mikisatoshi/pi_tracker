@@ -67,7 +67,7 @@ class PiTracker():
     '''
     tl = x, y  # 左上の頂点座標
     br = x + w, y + h  # 右下の頂点座標
-    cv2.rectangle(img, tl, br, (0, 255, 0), 2)
+    cv2.rectangle(img, tl, br, (0, 255, 0), 3)
 
 
 
