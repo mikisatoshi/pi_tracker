@@ -19,9 +19,9 @@ except:
 class PiTracker():
   def __init__(self, mode = 0, para_path = "hoge"):
     self.template = cv2.imread('template.JPG')  # テンプレート画像
-    cv2.imshow('aaa',self.template)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow('aaa',self.template)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
 
 
@@ -47,7 +47,7 @@ class PiTracker():
         minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(results)
         print('max value: {}, position: {}'.format(maxVal, maxLoc))
         drawn = frame.copy()
-        self.draw_window(drawn, maxLoc[0], maxLoc[1], self.template.shape[1], 10)
+        self.draw_window(drawn, maxLoc[0], maxLoc[1], self.template.shape[1], self.template.shape[0])
 
         cv2.imshow('frame',drawn)
         if cv2.waitKey(1) != -1:
@@ -67,7 +67,7 @@ class PiTracker():
     '''
     tl = x, y  # 左上の頂点座標
     br = x + w, y + h  # 右下の頂点座標
-    cv2.rectangle(img, tl, br, (0, 255, 0), 3)
+    cv2.rectangle(img, tl, br, (0, 255, 0), 3, thickness = 2)
 
 
 
